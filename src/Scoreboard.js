@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Player from "./Player";
 import "./Scoreboard.css"
+import AddPlayer from './AddPlayer';
 
 export default class Scoreboard extends Component {
     state = {
@@ -22,6 +23,9 @@ export default class Scoreboard extends Component {
                 <h1>Scoreboard</h1>
                 <ul>
                     {players_copy.map(this.renderPlayer)}
+                    <AddPlayer 
+                    addNewPlayer={this.addNewPlayer}
+                    />
                 </ul>
             </div>
         )
@@ -46,11 +50,19 @@ export default class Scoreboard extends Component {
                 return { ...player, score: player.score + 1 }
             }
             else {
-                return player
+                return { ...player }
             }
         })
 
         this.setState({ players: updatedPlayers })
+
+    }
+
+    addNewPlayer = (name) => {
+       
+        const newPlayer = { id: this.state.players.length + 1 , name, score: 0 }
+        
+        this.setState({ players: [...this.state.players, newPlayer]})
 
     }
 }

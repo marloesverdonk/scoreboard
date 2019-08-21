@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
-import Title from './Title'
-import Scoreboard from './Scoreboard'
+import Title from './Title';
+import Scoreboard from './Scoreboard';
+
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
- <Title content="Game"/>
+ <Title content=""/>
  <Scoreboard />
     </header>
     </div>
